@@ -7,3 +7,15 @@ const PORT = process.env.PORT
 app.listen(PORT, (req, res)=>{
     console.log(`server is running at ${HOST}:${PORT}`);
 })
+
+app.get('/', (req, res) =>{
+    res.send('Dolci')
+    
+})
+
+app.get('/Dolci',(req, res)=>{
+    res.json({
+        data:"",
+        counter: ""
+    })
+})
