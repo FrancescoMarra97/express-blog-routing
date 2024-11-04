@@ -1,21 +1,17 @@
 const express = require('express')
 const app = express()
 
-const HOST = process.env.HOST
+app.use(express.json())
+
+
 const PORT = process.env.PORT
+const HOST = process.env.HOST
+app.use(express.static('public'))
 
-app.listen(PORT, (req, res)=>{
-    console.log(`server is running at ${HOST}:${PORT}`);
-})
+const postsRouter = require('./routes/posts.js')
 
-app.get('/', (req, res) =>{
-    res.send('Dolci')
-    
-})
+app.use('/posts', postsRouter)
 
-app.get('/Dolci',(req, res)=>{
-    res.json({
-        data:"",
-        counter: ""
-    })
+app.listen(PORT, (req, res) => {
+	console.log(`Server is running in ${HOST}:${PORT}`)
 })
